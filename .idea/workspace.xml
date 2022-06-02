@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7c87c27-b32f-44e1-8275-6e17f68f7eb5" name="Changes" comment="fin code du nombre de joueur&#10;fin code afficher le plateau nu">
-      <change afterPath="$PROJECT_DIR$/src/P.java" afterDir="false" />
+    <list default="true" id="e7c87c27-b32f-44e1-8275-6e17f68f7eb5" name="Changes" comment="pb en récupérant le nombre de coup des joueurs mais ça va passer ^^">
+      <change afterPath="$PROJECT_DIR$/src/Cases.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mouv.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/P1.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654151328858</updated>
-      <workItem from="1654151331662" duration="15342000" />
+      <workItem from="1654151331662" duration="21184000" />
     </task>
     <task id="LOCAL-00001" summary="premier commit geraud">
       <created>1654157913767</created>
@@ -131,7 +131,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654161939660</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="afficher la cible : fait">
+      <created>1654167688177</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1654167688177</updated>
+    </task>
+    <task id="LOCAL-00009" summary="afficher la cible : fait">
+      <created>1654167717082</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1654167717082</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +178,8 @@
     <MESSAGE value="premier commit geraud" />
     <MESSAGE value="fin code du nombre de joueur&#10;fin code afficher le plateau nu&#10;fin code afficher la cible sur une case aléatoire" />
     <MESSAGE value="fin code du nombre de joueur&#10;fin code afficher le plateau nu" />
-    <option name="LAST_COMMIT_MESSAGE" value="fin code du nombre de joueur&#10;fin code afficher le plateau nu" />
+    <MESSAGE value="afficher la cible : fait" />
+    <MESSAGE value="pb en récupérant le nombre de coup des joueurs mais ça va passer ^^" />
+    <option name="LAST_COMMIT_MESSAGE" value="pb en récupérant le nombre de coup des joueurs mais ça va passer ^^" />
   </component>
 </project>

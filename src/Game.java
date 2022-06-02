@@ -10,6 +10,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Game {
+    public static Cases[][] cases = new Cases[16][16];
+
     private static int cas;
     public static int nbdejoueur=0;
     static JFrame f = new JFrame("carte de jeu");
@@ -22,13 +24,18 @@ public class Game {
     protected static int x4;
     protected static int y4;// x4 et y4 sont les coordonnées du robot vert
     protected static int x,y; //coordonnées de la cible
+    public static int xi,yi;
     public static boolean bool = false;
     public static boolean fin = true;
+    public static int couleur;
+    public static int[] nbcoup = new int[4];
+    protected static int deplacement;
+    protected static int[][] mur = new int[8][8];
     public static void playGame() throws InterruptedException, IOException {
-        /*nombredejoueur();
+        nombredejoueur();
         while(nbdejoueur==0){
             Thread.sleep(500);
-        }*/
+        }
         do{
             x1 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
             y1 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
@@ -88,8 +95,25 @@ public class Game {
         while(fin) {
             init(false);
             affichejeu();
+            for (int k = 0; k < 4; k++){
+                planche(k+1);
+            }
             couleur();
-            Thread.sleep(30000);
+            Thread.sleep(3000);
+            for(int i = 0; i < nbdejoueur; i++){
+                int k = nombredecoups();
+                nbcoup[i]=k;
+            }
+            int joueur = 0;
+            for(int i = 0; i< nbdejoueur; i++){
+                if(nbcoup[joueur]>nbcoup[i]){
+                    joueur=1;
+                }
+            }
+            deplacement = nbcoup[joueur];
+            for(int m = 0; m<deplacement;m++){
+                mouv.deplacement();
+            }
         }
         Main.fin();//Victoire
     }
@@ -181,6 +205,7 @@ public class Game {
                 JLabel pic = new JLabel(new ImageIcon(img));
                 panel.add(pic);
                 jfond.add(panel);
+                couleur = 1;
                 break;
             case 2 :
                 x = 4;
@@ -189,6 +214,7 @@ public class Game {
                 JLabel pic1 = new JLabel(new ImageIcon(img));
                 panel.add(pic1);
                 jfond.add(panel);
+                couleur = 2;
                 break;
             case 3 :
                 x = 5;
@@ -197,6 +223,7 @@ public class Game {
                 JLabel pic2 = new JLabel(new ImageIcon(img));
                 panel.add(pic2);
                 jfond.add(panel);
+                couleur = 4;
                 break;
             case 4 :
                 x = 9;
@@ -205,6 +232,7 @@ public class Game {
                 JLabel pic3 = new JLabel(new ImageIcon(img));
                 panel.add(pic3);
                 jfond.add(panel);
+                couleur = 3;
                 break;
             case 5:
                 x = 9;
@@ -213,6 +241,7 @@ public class Game {
                 JLabel pic5 = new JLabel(new ImageIcon(img));
                 panel.add(pic5);
                 jfond.add(panel);
+                couleur = 3;
                 break;
             case 6 :
                 x = 10;
@@ -221,6 +250,7 @@ public class Game {
                 JLabel pic6 = new JLabel(new ImageIcon(img));
                 panel.add(pic6);
                 jfond.add(panel);
+                couleur = 4;
                 break;
             case 7 :
                 x = 10;
@@ -229,6 +259,7 @@ public class Game {
                 JLabel pic7 = new JLabel(new ImageIcon(img));
                 panel.add(pic7);
                 jfond.add(panel);
+                couleur = 3;
                 break;
             case 8:
                 x = 11;
@@ -237,6 +268,7 @@ public class Game {
                 JLabel pic8 = new JLabel(new ImageIcon(img));
                 panel.add(pic8);
                 jfond.add(panel);
+                couleur = 1;
                 break;
             case 9:
                 x = 14;
@@ -245,6 +277,7 @@ public class Game {
                 JLabel pic9 = new JLabel(new ImageIcon(img));
                 panel.add(pic9);
                 jfond.add(panel);
+                couleur = 2;
                 break;
             case 10 :
                 x = 3;
@@ -253,6 +286,7 @@ public class Game {
                 JLabel pic10 = new JLabel(new ImageIcon(img));
                 panel.add(pic10);
                 jfond.add(panel);
+                couleur = 1;
                 break;
             case 11 :
                 x = 6;
@@ -261,6 +295,7 @@ public class Game {
                 JLabel pic11 = new JLabel(new ImageIcon(img));
                 panel.add(pic11);
                 jfond.add(panel);
+                couleur = 2;
                 break;
             case 12:
                 x = 6;
@@ -269,6 +304,7 @@ public class Game {
                 JLabel pic12 = new JLabel(new ImageIcon(img));
                 panel.add(pic12);
                 jfond.add(panel);
+                couleur = 4;
                 break;
             case 13:
                 x = 9;
@@ -277,6 +313,7 @@ public class Game {
                 JLabel pic13 = new JLabel(new ImageIcon(img));
                 panel.add(pic13);
                 jfond.add(panel);
+                couleur = 2;
                 break;
             case 14 :
                 x = 12;
@@ -285,6 +322,7 @@ public class Game {
                 JLabel pic14 = new JLabel(new ImageIcon(img));
                 panel.add(pic14);
                 jfond.add(panel);
+                couleur = 1;
                 break;
             case 15:
                 x = 13;
@@ -293,9 +331,184 @@ public class Game {
                 JLabel pic15 = new JLabel(new ImageIcon(img));
                 panel.add(pic15);
                 jfond.add(panel);
+                couleur = 4;
                 break;
         }
         jfond.setVisible(true);
+    }
+    public static int nombredecoups() throws InterruptedException {
+        bool = true;
+        cas = 0;
+        JFrame frame = new JFrame("frame");
+        frame.setLayout(new FlowLayout());
+        JLabel label = new JLabel("Choisissez le nombre de coups que vous souhaiter faire");
+        //Ajouter l'étiquette au frame
+        frame.add(label);
+
+        String[] items = { "1", "2", "3", "4","5","6","7","8","9","10","11"};
+        JComboBox cb = new JComboBox(items);
+        cb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Valeur: " + cb.getSelectedItem().toString());
+                switch (cb.getSelectedItem().toString()){
+                    case "1":
+                        cas = 1;
+                        break;
+                    case "2" :
+                        cas = 2;
+                        break;
+                    case "3" :
+                        cas = 3;
+                        break;
+                    case "4" :
+                        cas = 4;
+                        break;
+                    case "5" :
+                        cas = 5;
+                        break;
+                    case "6" :
+                        cas = 6;
+                        break;
+                    case "7" :
+                        cas = 7;
+                        break;
+                    case "8" :
+                        cas = 8;
+                        break;
+                    case "9" :
+                        cas = 9;
+                        break;
+                    case "10" :
+                        cas = 10;
+                        break;
+                    case "11":
+                        cas =11;
+                        break;
+                }
+            }
+        });
+        frame.add(cb);
+        JButton btn = new JButton("Choisissez le nombre de coup que vous pensez pouvoir faire");
+        frame.add(btn);
+        btn.addActionListener(e -> {
+            frame.dispose();
+            if (cas == 0) {
+                try {
+                    nombredecoups();
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }else {
+                frame.setVisible(false);
+                bool = false;
+            }
+        });
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(2500, 2500);
+        frame.setVisible(true);
+        do{
+            Thread.sleep(500);
+        }while (bool);
+        return cas;
+    }
+    public static void creationmap(){
+        for(int k = 1; k<=4; k++){
+            planche(k);
+        }
+    }
+    public static void planche(int k){
+        switch (k){
+            case 1 :
+                planche1(); //à terme, on peux ici appliquer un random pour jongler avec d'autres planches
+                break;
+            case 2:
+                planche2(); //à terme, on peux ici appliquer un random pour jongler avec d'autres planches
+                break;
+            case 3:
+                planche3(); //à terme, on peux ici appliquer un random pour jongler avec d'autres planches
+                break;
+            case 4:
+                planche4(); //à terme, on peux ici appliquer un random pour jongler avec d'autres planches
+                break;
+        }
+    }
+    public static void planche1(){
+        mur = new int[][]{{0,0,0,10,0,0,0,0},
+                {0,0,200,0,0,0,0,0},
+                {0,0,0,0,0,0,11,0},
+                {0,0,0,0,0,1,0,0},
+                {0,0,0,0,0,0,0,100},
+                {0,10,0,0,0,0,0,0},
+                {0,1,0,0,0,0,0,0},
+                {1,0,0,0,1,10,0,111}};
+        for(int i=0;i<8;i++){
+            for(int j = 0;j<8;j++){
+                xi=i;
+                yi=j;
+                Cases cell;
+                cell = new Cases();
+                cases[i][j] = cell;
+            }
+        }
+        //afficher la fenetre planche ricochet robot 1 spe verso
+    }
+    public static void planche2(){
+        mur = new int[][]{{0,0,0,0,10,0,0,0},
+                {0,0,10,0,0,0,0,0},
+                {0,1,0,0,0,0,0,0},
+                {0,0,0,10,0,0,0,1},
+                {0,0,0,1,0,0,0,0},
+                {0,0,0,0,0,0,0,11,0},
+                {0,0,10,1,0,0,0,0},
+                {111,0,0,0,0,12,0,0}};
+        for(int i=0;i<8;i++){
+            for(int j = 0;j<8;j++){
+                xi=i;
+                yi=j+8;
+                Cases cell;
+                cell = new Cases();
+                cases[i][j] = cell;
+            }
+        }//afficher planche ricochet robt 2 spé
+    }
+    public static void planche3(){
+        mur = new int[][]{{0,0,0,0,0,0,0,111},
+                {0,0,0,0,1,10,0,0},
+                {1,0,0,0,0,0,0,200},
+                {0,100,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,10},
+                {0,0,0,0,0,0,11,0},
+                {0,0,0,10,0,0,0,0},
+                {0,0,0,1,0,0,10,0}};
+        for(int i=0;i<8;i++){
+            for(int j = 0;j<8;j++){
+                xi=i+8;
+                yi=j;
+                Cases cell;
+                cell = new Cases();
+                cases[i][j] = cell;
+            }
+        }
+    }//fficher robot ricochet 3 spe
+    public static void planche4(){
+        mur = new int[][]{{111,0,0,0,0,0,0,0},
+                {0,0,0,1,0,0,0,0},
+                {0,0,1,0,0,0,0,0},
+                {0,0,0,0,1,10,0,0,0},
+                {0,100,0,0,0,0,1,0,0},
+                {0,11,0,0,0,0,0,1},
+                {0,0,0,200,0,0,0,0},
+                {0,0,0,10,0,0,0,0}};
+        for(int i=0;i<8;i++){
+            for(int j = 0;j<8;j++){
+                xi=i+8;
+                yi=j+8;
+                Cases cell;
+                cell = new Cases();
+                cases[i][j] = cell;
+            }
+        }//fficher robot ricochet 4 spe
     }
 
 }
