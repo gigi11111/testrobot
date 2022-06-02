@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7c87c27-b32f-44e1-8275-6e17f68f7eb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/robotricochet.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DrawMyImgs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/P4.jpg" afterDir="false" />
+    <list default="true" id="e7c87c27-b32f-44e1-8275-6e17f68f7eb5" name="Changes" comment="premier commit geraud">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DrawMyImgs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DrawMyImgs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +77,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654151328858</updated>
-      <workItem from="1654151331662" duration="5528000" />
+      <workItem from="1654151331662" duration="6551000" />
     </task>
+    <task id="LOCAL-00001" summary="premier commit geraud">
+      <created>1654157913767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654157913768</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,5 +102,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="premier commit geraud" />
+    <option name="LAST_COMMIT_MESSAGE" value="premier commit geraud" />
   </component>
 </project>
