@@ -97,10 +97,19 @@ public class Game {
             init(false);
             affichejeu();
             creationmap();
+            String i3 = "";
+            for(int k2 = 0; k2 <16;k2++){
+                for(int k = 0; k <16;k++) {
+                i3 += Game.murs[k2][k] + " ";
+                }
+                System.out.println(i3);
+                i3="";
+            }
+            System.out.println(i3);
             couleur();
             Thread.sleep(3000);
             for (int i = 0; i < nbdejoueur; i++) {
-                int k = nombredecoups();
+                int k = nombredecoups(i);
                 nbcoup[i] = k;
             }
             int joueur = 0;
@@ -341,10 +350,10 @@ public class Game {
         jfond.setVisible(true);
     }
 
-    public static int nombredecoups() throws InterruptedException {
+    public static int nombredecoups(int i) throws InterruptedException {
         bool = true;
         cas = 0;
-        JFrame frame = new JFrame("frame");
+        JFrame frame = new JFrame("joueur"+i);
         frame.setLayout(new FlowLayout());
         JLabel label = new JLabel("Choisissez le nombre de coups que vous souhaiter faire");
         //Ajouter l'étiquette au frame
@@ -400,7 +409,7 @@ public class Game {
             frame.dispose();
             if (cas == 0) {
                 try {
-                    nombredecoups();
+                    nombredecoups(i);
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -469,9 +478,9 @@ public class Game {
                 {0, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 10, 0, 0, 0, 1},
                 {0, 0, 0, 1, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 11, 0},
+                {0, 0, 0, 0, 0, 0, 11, 0},
                 {0, 0, 10, 1, 0, 0, 0, 0},
-                {111, 0, 0, 0, 0, 12, 0, 0}};
+                {111, 0, 0, 0, 0, 10, 0, 0}};
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 xi = i;
@@ -488,8 +497,8 @@ public class Game {
         mur = new int[][]{{0, 0, 0, 0, 0, 0, 0, 111},
                 {0, 0, 0, 0, 1, 10, 0, 0},
                 {1, 0, 0, 0, 0, 0, 0, 200},
-                {0, 100, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 10},
+                {0, 100, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 10},
                 {0, 0, 0, 0, 0, 0, 11, 0},
                 {0, 0, 0, 10, 0, 0, 0, 0},
                 {0, 0, 0, 1, 0, 0, 10, 0}};
@@ -506,11 +515,11 @@ public class Game {
     }
 
     public static void planche4() {
-        mur = new int[][]{{111, 0, 0, 0, 0, 0, 0, 0},
+        mur = new int[][]{{111, 0, 0, 0, 0, 1, 0, 0},
                 {0, 0, 0, 1, 0, 0, 0, 0},
                 {0, 0, 1, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 1, 10, 0, 0, 0},
-                {0, 100, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 1, 10, 0, 0},
+                {0, 100, 0, 0, 0, 1, 0, 0},
                 {0, 11, 0, 0, 0, 0, 0, 1},
                 {0, 0, 0, 200, 0, 0, 0, 0},
                 {0, 0, 0, 10, 0, 0, 0, 0}};

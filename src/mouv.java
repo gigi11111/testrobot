@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class mouv {
     public static int couleurrobot;
@@ -9,9 +10,9 @@ public class mouv {
     public static boolean boucle;
     public static boolean collision = false;
     public static void deplacement() throws InterruptedException {
+        System.out.println(Game.x1+" "+Game.y1);
         choixdurobot();
         choixdirection();
-        System.out.println(Game.x1+" "+Game.y1);
         boucle = true;
         do {
             mouvt(couleurrobot, direction);
@@ -161,7 +162,23 @@ public class mouv {
                 }
                 break;
             case 2:
-
+                System.out.println(Game.x1 + "  x1 et y1  " + Game.y1);
+                if(Game.y1!=15) {
+                    if (!robot(Game.x1, Game.y1 + 1)) {
+                        int mur = Game.murs[Game.x1][Game.y1+1] % 2;
+                        System.out.println("mur : "+ mur);
+                        System.out.println(Game.murs);
+                        if (mur == 0) {
+                            Game.y1 += 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else{
+                    boucle = false;
+                }
                 break;
             case 3:
 
