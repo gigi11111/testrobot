@@ -9,6 +9,7 @@ public class mouv {
     public static int direction;
     public static boolean boucle;
     public static boolean collision = false;
+    public static int mur;
     public static void deplacement() throws InterruptedException {
         System.out.println(Game.x1+" "+Game.y1);
         choixdurobot();
@@ -148,7 +149,7 @@ public class mouv {
             case 1:
                 if(Game.y1!=0) {
                     if (!robot(Game.x1, Game.y1 - 1)) {
-                        int mur = Game.murs[Game.x1][Game.y1] % 2;
+                        int mur = (Game.murs[Game.x1][Game.y1]) % 2;
                         if (mur == 0) {
                             Game.y1 -= 1;
                         } else {
@@ -165,7 +166,7 @@ public class mouv {
                 System.out.println(Game.x1 + "  x1 et y1  " + Game.y1);
                 if(Game.y1!=15) {
                     if (!robot(Game.x1, Game.y1 + 1)) {
-                        int mur = Game.murs[Game.x1][Game.y1+1] % 2;
+                        mur = (Game.murs[Game.x1][Game.y1+1]) % 2;
                         System.out.println("mur : "+ mur);
                         System.out.println(Game.murs);
                         if (mur == 0) {
@@ -181,18 +182,259 @@ public class mouv {
                 }
                 break;
             case 3:
-
+                if(Game.x1!=0) {
+                    if (!robot(Game.x1-1, Game.y1)) {
+                        int mur1 = (Game.murs[Game.x1][Game.y1]) % 2;
+                        int mur = (Game.murs[Game.x1][Game.y1] - mur1)%10;
+                        if (mur == 0) {
+                            Game.x1 -= 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else {
+                    boucle = false;
+                }
                 break;
             case 4:
-
+                if(Game.x1!=15) {
+                    if (!robot(Game.x1+1, Game.y1)) {
+                        int mur1 = (Game.murs[Game.x1+1][Game.y1]) % 2;
+                        int mur = (Game.murs[Game.x1+1][Game.y1] - mur1)%10;
+                        if (mur == 0) {
+                            Game.x1 += 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else {
+                    boucle = false;
+                }
                 break;
         }
     }
     public static void directionB(int direction){
-
+        switch (direction){
+        case 1:
+        if(Game.y2!=0) {
+            if (!robot(Game.x4, Game.y4- 1)) {
+                int mur = (Game.murs[Game.x4][Game.y4]) % 2;
+                if (mur == 0) {
+                    Game.y4-= 1;
+                } else {
+                    boucle = false;
+                }
+            } else {
+                boucle = false;
+            }
+        }else{
+            boucle = false;
+        }
+        break;
+        case 2:
+        System.out.println(Game.x2 + "  x2 et y2  " + Game.y2);
+        if(Game.y2!=15) {
+            if (!robot(Game.x2, Game.y2 + 1)) {
+                mur = (Game.murs[Game.x2][Game.y2+1]) % 2;
+                System.out.println("mur : "+ mur);
+                System.out.println(Game.murs);
+                if (mur == 0) {
+                    Game.y2 += 1;
+                } else {
+                    boucle = false;
+                }
+            } else {
+                boucle = false;
+            }
+        }else{
+            boucle = false;
+        }
+        break;
+            case 3:
+                if(Game.x2!=0) {
+                    if (!robot(Game.x2-1, Game.y2)) {
+                        int mur1 = (Game.murs[Game.x2][Game.y2]) % 2;
+                        int mur = (Game.murs[Game.x2][Game.y2] - mur1)%10;
+                        if (mur == 0) {
+                            Game.x2 -= 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else {
+                    boucle = false;
+                }
+                break;
+            case 4:
+                if(Game.x2!=15) {
+                    if (!robot(Game.x2+1, Game.y2)) {
+                        int mur1 = (Game.murs[Game.x2+1][Game.y2]) % 2;
+                        int mur = (Game.murs[Game.x2+1][Game.y2] - mur1)%10;
+                        if (mur == 0) {
+                            Game.x1 += 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else {
+                    boucle = false;
+                }
+                break;
+    }}
+    public static void directionJ(int direction){
+        switch (direction){
+            case 1:
+                if(Game.y3!=0) {
+                    if (!robot(Game.x4, Game.y4 - 1)) {
+                        int mur = (Game.murs[Game.x4][Game.y4]) % 2;
+                        if (mur == 0) {
+                            Game.y4 -= 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else{
+                    boucle = false;
+                }
+                break;
+            case 2:
+                System.out.println(Game.x3 + "  x3 et y3  " + Game.y3);
+                if(Game.y3!=15) {
+                    if (!robot(Game.x3, Game.y3 + 1)) {
+                        mur = (Game.murs[Game.x3][Game.y3+1]) % 2;
+                        System.out.println("mur : "+ mur);
+                        System.out.println(Game.murs);
+                        if (mur == 0) {
+                            Game.y3 += 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else{
+                    boucle = false;
+                }
+                break;
+            case 3:
+                if(Game.x3!=0) {
+                    if (!robot(Game.x3-1, Game.y3)) {
+                        int mur1 = (Game.murs[Game.x3][Game.y3]) % 2;
+                        int mur = (Game.murs[Game.x3][Game.y3] - mur1)%10;
+                        if (mur == 0) {
+                            Game.x3 -= 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else {
+                    boucle = false;
+                }
+                break;
+            case 4:
+                if(Game.x3!=15) {
+                    if (!robot(Game.x3+1, Game.y3)) {
+                        int mur1 = (Game.murs[Game.x3+1][Game.y3]) % 2;
+                        int mur = (Game.murs[Game.x3+1][Game.y3] - mur1)%10;
+                        if (mur == 0) {
+                            Game.x3 += 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else {
+                    boucle = false;
+                }
+                break;
+        }
     }
-    public static void directionJ(int direction){}
-    public static void directionV(int direction){}
+    public static void directionV(int direction) {
+        switch (direction) {
+            case 1:
+                if (Game.y4 != 0) {
+                    if (!robot(Game.x4, Game.y4 - 1)) {
+                        int mur = (Game.murs[Game.x4][Game.y4]) % 2;
+                        if (mur == 0) {
+                            Game.y4 -= 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                } else {
+                    boucle = false;
+                }
+                break;
+            case 2:
+                System.out.println(Game.x4 + "  x4 et y4  " + Game.y4);
+                if (Game.y4 != 15) {
+                    if (!robot(Game.x4, Game.y4 + 1)) {
+                        mur = (Game.murs[Game.x4][Game.y4 + 1]) % 2;
+                        System.out.println("mur : " + mur);
+                        System.out.println(Game.murs);
+                        if (mur == 0) {
+                            Game.y4 += 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                } else {
+                    boucle = false;
+                }
+                break;
+            case 3:
+                if(Game.x4!=0) {
+                    if (!robot(Game.x4-1, Game.y4)) {
+                        int mur1 = (Game.murs[Game.x4][Game.y4]) % 2;
+                        int mur = (Game.murs[Game.x4][Game.y4] - mur1)%10;
+                        if (mur == 0) {
+                            Game.x4 -= 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else {
+                    boucle = false;
+                }
+                break;
+            case 4:
+                if(Game.x4!=15) {
+                    if (!robot(Game.x4+1, Game.y4)) {
+                        int mur1 = (Game.murs[Game.x4+1][Game.y4]) % 2;
+                        int mur = (Game.murs[Game.x4+1][Game.y4] - mur1)%10;
+                        if (mur == 0) {
+                            Game.x4 += 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else {
+                    boucle = false;
+                }
+                break;
+        }
+    }
     public static boolean robot(int x, int y){
         boolean bool = false;
         if((x==Game.x1&& y ==Game.y1)||(x==Game.x2&& y ==Game.y2)||(x==Game.x3&& y ==Game.y3)||(x==Game.x4&& y ==Game.y4)){
