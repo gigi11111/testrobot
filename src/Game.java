@@ -23,10 +23,44 @@ public class Game {
         while(nbdejoueur==0){
             Thread.sleep(500);
         }*/
-        robotinit(x1,y1);
-        robotinit(x2,y2);
-        robotinit(x3,y3);
-        robotinit(x4,y4);
+        do{
+            x1 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            y1 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            if((x1 == 8 || x1==9) && (y1 == 8 || y1==9)){
+                bool = true;
+            }else{
+                bool = false;
+            }
+        }while (bool);
+        do{
+            x2 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            y2 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            if((x2 == 8 || x2==9) && (y2 == 8 || y2==9)){
+                bool = true;
+            }else{
+                bool = false;
+            }
+        }while (bool);
+        do{
+            x3 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            y3 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            if((x3 == 8 || x3==9) && (y3 == 8 || y3==9)){
+                bool = true;
+            }else{
+                bool = false;
+            }
+        }while (bool);
+        do{
+            x4 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            y4 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            if((x4 == 8 || x4==9) && (y4 == 8 || y4==9)){
+                bool = true;
+            }else{
+                bool = false;
+            }
+        }while (bool);
+        System.out.println(x1+" "+y1);
+        System.out.println(x2+" "+y2);
         affichejeu();
     }
     public static void nombredejoueur(){
@@ -79,17 +113,6 @@ public class Game {
         f.setVisible(true);
         f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-    public static void robotinit(int x, int y){
-        do{
-            x = ThreadLocalRandom.current().nextInt(0, 15 + 1);
-            y = ThreadLocalRandom.current().nextInt(0, 15 + 1);
-            if((x == 8 || x==9) && (y == 8 || y==9)){
-                bool = true;
-            }else{
-                bool = false;
-            }
-        }while (bool);
     }
 
 }
