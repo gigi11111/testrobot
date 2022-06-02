@@ -9,8 +9,14 @@ public class Game {
     private static int cas;
     public static int nbdejoueur=0;
     static JFrame f = new JFrame("carte de jeu");
-    protected static int xf;
-    protected static int yf;// xf et yf sont les coordonnées de la cible à atteindre
+    protected static int x1;
+    protected static int y1;// xf et yf sont les coordonnées du robot 1 protected static int x1;
+    protected static int x2;
+    protected static int y2;// xf et yf sont les coordonnées du robot 1 protected static int x1;
+    protected static int x3;
+    protected static int y3;// xf et yf sont les coordonnées du robot 1 protected static int x1;
+    protected static int x4;
+    protected static int y4;// xf et yf sont les coordonnées du robot 1
     public static boolean bool = false;
     public static void playGame() throws InterruptedException {
         /*nombredejoueur();
