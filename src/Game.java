@@ -23,17 +23,10 @@ public class Game {
         while(nbdejoueur==0){
             Thread.sleep(500);
         }*/
-        do{
-        xf = ThreadLocalRandom.current().nextInt(0, 15 + 1);
-        yf = ThreadLocalRandom.current().nextInt(0, 15 + 1);
-        System.out.println(xf+ " "+ yf);
-        if((xf == 8 || xf==9) && (yf == 8 || yf==9)){
-            bool = true;
-        }else{
-            bool = false;
-        }
-        }while (bool);
-
+        robotinit(x1,y1);
+        robotinit(x2,y2);
+        robotinit(x3,y3);
+        robotinit(x4,y4);
         affichejeu();
     }
     public static void nombredejoueur(){
@@ -86,6 +79,17 @@ public class Game {
         f.setVisible(true);
         f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    public static void robotinit(int x, int y){
+        do{
+            x = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            y = ThreadLocalRandom.current().nextInt(0, 15 + 1);
+            if((x == 8 || x==9) && (y == 8 || y==9)){
+                bool = true;
+            }else{
+                bool = false;
+            }
+        }while (bool);
     }
 
 }

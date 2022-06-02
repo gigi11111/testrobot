@@ -13,7 +13,10 @@ public class DrawMyImgs extends JPanel {
         Image img4 = Toolkit.getDefaultToolkit().getImage("src\\p44.png");
         g.drawImage(img4, 321, 321, this);
         Image img5 = Toolkit.getDefaultToolkit().getImage("src\\coffre.png");
-        g.drawImage(img5, 40*Game.xf, 40*Game.yf, this);
+        g.drawImage(img5, 40*Game.x1, 40*Game.y1, this);
+        g.drawImage(img5, 40*Game.x2, 40*Game.y2, this);
+        g.drawImage(img5, 40*Game.x3, 40*Game.y3, this);
+        g.drawImage(img5, 40*Game.x4, 40*Game.y4, this);
         //g.drawString("guerrier épée", 630, 250);
     }
 }

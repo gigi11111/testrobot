@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7c87c27-b32f-44e1-8275-6e17f68f7eb5" name="Changes" comment="fin code du nombre de joueur&#10;fin code afficher le plateau nu&#10;fin code afficher la cible sur une case aléatoire">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DrawMyImgs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DrawMyImgs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654151328858</updated>
-      <workItem from="1654151331662" duration="7523000" />
+      <workItem from="1654151331662" duration="7995000" />
     </task>
     <task id="LOCAL-00001" summary="premier commit geraud">
       <created>1654157913767</created>
@@ -92,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654158458712</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fin code du nombre de joueur&#10;fin code afficher le plateau nu&#10;fin code afficher la cible sur une case aléatoire">
+      <created>1654159468864</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654159468864</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
