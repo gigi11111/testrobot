@@ -14,7 +14,6 @@ public class Game {
 
     private static int cas;
     public static int nbdejoueur = 0;
-    static JFrame f = new JFrame("carte de jeu");
     protected static int x1;
     protected static int y1;// x1 et y1 sont les coordonnées du robot rouge
     protected static int x2;
@@ -97,9 +96,7 @@ public class Game {
         while (fin) {
             init(false);
             affichejeu();
-            for (int k = 1; k <= 4; k++) {
-                planche(k);
-            }
+            creationmap();
             couleur();
             Thread.sleep(3000);
             for (int i = 0; i < nbdejoueur; i++) {
@@ -166,6 +163,7 @@ public class Game {
     }
 
     public static void affichejeu() {
+        JFrame f = new JFrame("carte de jeu");
         f.getContentPane().add(new DrawMyImgs());
         f.setSize(670, 690);
         f.setVisible(true);
@@ -456,9 +454,9 @@ public class Game {
             for (int j = 0; j < 8; j++) {
                 xi = i;
                 yi = j;
-                Cases cell;
-                cell = new Cases();
-                cases[i][j] = cell;
+                //Cases cell;
+                //cell = new Cases();
+                //cases[i][j] = cell;
                 murs[i][j] = mur[i][j];
             }
         }
@@ -478,9 +476,9 @@ public class Game {
             for (int j = 0; j < 8; j++) {
                 xi = i;
                 yi = j + 8;
-                Cases cell;
-                cell = new Cases();
-                cases[i][j] = cell;
+                //Cases cell;
+                //cell = new Cases();
+                //cases[i][j] = cell;
                 murs[xi][yi] = mur[i][j];
             }
         }//afficher planche ricochet robt 2 spé
@@ -499,9 +497,9 @@ public class Game {
             for (int j = 0; j < 8; j++) {
                 xi = i + 8;
                 yi = j;
-                Cases cell;
-                cell = new Cases();
-                cases[i][j] = cell;
+                //Cases cell;
+                //cell = new Cases();
+                //cases[i][j] = cell;
                 murs[xi][yi] = mur[i][j];
             }
         }
@@ -520,9 +518,9 @@ public class Game {
             for (int j = 0; j < 8; j++) {
                 xi = i + 8;
                 yi = j + 8;
-                Cases cell;
-                cell = new Cases();
-                cases[i][j] = cell;
+                //Cases cell;
+                //cell = new Cases();
+                //cases[i][j] = cell;
                 murs[xi][yi] = mur[i][j];
             }
         }

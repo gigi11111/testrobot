@@ -11,10 +11,13 @@ public class mouv {
     public static void deplacement() throws InterruptedException {
         choixdurobot();
         choixdirection();
+        System.out.println(Game.x1+" "+Game.y1);
         boucle = true;
         do {
             mouvt(couleurrobot, direction);
         }while (boucle);
+        System.out.println(Game.x1+" "+Game.y1);
+        Game.affichejeu();
     }
     public static void choixdurobot() throws InterruptedException {
         boucle = true;
@@ -142,13 +145,19 @@ public class mouv {
         collision = false;
         switch (direction){
             case 1:
-                if(!robot(Game.x1,Game.y1 +1)){
-                    int mur = Game.murs[Game.x1][Game.y1] %2;
-                    if(mur==0){
-                       Game.y1 +=1;
-                    }else{
-                        boucle=false;
+                if(Game.y1!=0) {
+                    if (!robot(Game.x1, Game.y1 - 1)) {
+                        int mur = Game.murs[Game.x1][Game.y1] % 2;
+                        if (mur == 0) {
+                            Game.y1 -= 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
                     }
+                }else{
+                    boucle = false;
                 }
                 break;
             case 2:
