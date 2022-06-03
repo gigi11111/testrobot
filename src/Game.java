@@ -6,12 +6,15 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Game {
     public static Cases[][] cases = new Cases[16][16];
 
+    protected static int[][] murvert = new int[23][2];
+    protected static int[][] murhori = new int[23][2];
     private static int cas;
     public static int nbdejoueur = 0;
     protected static int x1;
@@ -26,17 +29,19 @@ public class Game {
     public static int xi, yi;
     public static boolean bool = false;
     public static boolean fin = true;
-    public static int couleur;
+    public static int couleur;//stocke la couleur de la cible
     public static int[] nbcoup = new int[4];
-    protected static int deplacement;
+    protected static int deplacement;// stoke le nbre de déplacement accorder au joueur en cours
     protected static int[][] mur = new int[8][8];
     protected static int[][] murs = new int[16][16];
+    public static int joueur;// addresse joueur en cours dans la liste
 
     public static void playGame() throws InterruptedException, IOException {
-        nombredejoueur();
-        while (nbdejoueur == 0) {
+        nombredejoueur();// permet de donner le nombre de joueur et de rappeler les regles
+        while (nbdejoueur == 0) {//permet de mettre le code en pause tant que les joueur n'ont pas répondu à ce qui précède
             Thread.sleep(500);
         }
+        // les do{}while() qui suivent donnent un emplacement aléatoire aux 4 robots
         do {
             x1 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
             y1 = ThreadLocalRandom.current().nextInt(0, 15 + 1);
@@ -92,11 +97,11 @@ public class Game {
             }
         } while (bool);
         System.out.println(" " + x1 + " " + y1 + " " + x2 + " " + y2 + " " + x3 + " " + y3 + " " + x4 + " " + y4);
-        init(true);
+        init(true);//enregistre la position pour relancer le jeu à l'identique
         while (fin) {
-            init(false);
-            affichejeu();
-            creationmap();
+            init(false);//reinitialise le jeu selon la configuration précédente
+            affichejeu();// affiche la carte du jeu
+            creationmap();//création des murs
             String i3 = "";
             for(int k2 = 0; k2 <16;k2++){
                 for(int k = 0; k <16;k++) {
@@ -106,16 +111,16 @@ public class Game {
                 i3="";
             }
             System.out.println(i3);
-            couleur();
-            Thread.sleep(3000);
-            for (int i = 0; i < nbdejoueur; i++) {
+            couleur();//création de la cible
+            Thread.sleep(30000);
+            for (int i = 1; i <= nbdejoueur; i++) {
                 int k = nombredecoups(i);
-                nbcoup[i] = k;
+                nbcoup[i-1] = k;
             }
-            int joueur = 0;
-            for (int i = 0; i < nbdejoueur; i++) {
+            joueur = 0;
+            for (int i = 1; i <= nbdejoueur; i++) {
                 if (nbcoup[joueur] > nbcoup[i]) {
-                    joueur = 1;
+                    joueur = i-1;
                 }
             }
             deplacement = nbcoup[joueur];
@@ -127,7 +132,15 @@ public class Game {
     }
 
     public static void nombredejoueur() {
-        JFrame frame = new JFrame("frame");
+        // permet de donner le nombre de joueur et de rappeler les regles
+        JFrame frame = new JFrame("Annoncer le nombre de joueur");
+        frame.getContentPane().setBackground(Color.orange);
+        JLabel rules = new JLabel ("Une Image avec une couleur et un symbole vont apparaître \n" +
+                "Cela correspond à une case sur le plateau. Vous devez mener le robot de la couleur correspondante sur cette case\n" );
+        JLabel rules2 = new JLabel ("Vous pouvez utilisez les autres robots à tour de rôle. Celui qui réussit avec le nombre minimum de coups gagne!!\n" +
+                "En évitant les murs de préférence");
+        frame.add(rules);
+        frame.add(rules2);
         frame.setLayout(new FlowLayout());
         JLabel label = new JLabel("Choisissez le nombre de joueurs");
         //Ajouter l'étiquette au frame
@@ -167,7 +180,7 @@ public class Game {
             System.out.println(nbdejoueur);
         });
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(250, 250);
+        frame.setSize(1050, 250);
         frame.setVisible(true);
     }
 
@@ -181,6 +194,8 @@ public class Game {
     }
 
     public static void init(boolean bool) {
+        //true : enregistre la position pour relancer le jeu à l'identique
+        //false :reinitialise le jeu selon la configuration précédente
         if (bool) {
             P.x11 = x1;
             P.y11 = y1;
@@ -203,6 +218,7 @@ public class Game {
     }
 
     public static void couleur() throws IOException {
+        // permet de definir une cible de manière aléatoire
         int k = ThreadLocalRandom.current().nextInt(1, 15 + 1);
         Frame jfond = new Frame("cible à viser");
         jfond.setSize(150, 150);
@@ -351,9 +367,11 @@ public class Game {
     }
 
     public static int nombredecoups(int i) throws InterruptedException {
+        // premet de récupérer le nombre de coup annoncer par le joueur
         bool = true;
         cas = 0;
         JFrame frame = new JFrame("joueur"+i);
+        frame.getContentPane().setBackground(Color.orange);
         frame.setLayout(new FlowLayout());
         JLabel label = new JLabel("Choisissez le nombre de coups que vous souhaiter faire");
         //Ajouter l'étiquette au frame
@@ -419,7 +437,7 @@ public class Game {
             }
         });
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(2500, 2500);
+        frame.setSize(600, 200);
         frame.setVisible(true);
         do {
             Thread.sleep(500);
@@ -431,6 +449,9 @@ public class Game {
         for (int k = 1; k <= 4; k++) {
             planche(k);
         }
+        murvert = new int [][]{{0,3},{0,12},{1,10},{2,6},{3,11},{5,1},{5,14},{6,11},{7,13},{7,9},{7,7},{7,5},{8,7},{8,9},{9,5},{9,11},{11,13},{12,7},{13,6},{13,9},{14,3},{15,11},{15,6}};
+        murhori = new int [][]{{2,6},{2,9},{3,5},{3,15},{4,11},{5,14},{6,1},{6,10},{7,0},{7,4},{7,7},{7,8},{8,13},{9,4},{9,7},{9,8},{10,0},{10,10},{11,12},{12,13},{13,15},{13,6},{13,9},{15,3}};
+
     }
 
     public static void planche(int k) {

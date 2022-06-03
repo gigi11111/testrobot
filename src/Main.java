@@ -29,6 +29,12 @@ public class Main
     }
 
     public static void fin(){
+        //permet de sortir
         System.exit(1);
+    }
+    public static void victoire(){
+        //permettra de verrifier la conditon de victoire de sortir
+        System.out.println("bien joué");
+        fin();
     }
 }

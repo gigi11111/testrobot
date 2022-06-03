@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7c87c27-b32f-44e1-8275-6e17f68f7eb5" name="Changes" comment="commit correction de l erreur">
+    <list default="true" id="e7c87c27-b32f-44e1-8275-6e17f68f7eb5" name="Changes" comment="fin de l'implementation des déplacements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mouv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mouv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +82,9 @@
       <workItem from="1654151331662" duration="32923000" />
       <workItem from="1654190151497" duration="1127000" />
       <workItem from="1654195129963" duration="207000" />
-      <workItem from="1654196540505" duration="306000" />
+      <workItem from="1654196540505" duration="2277000" />
+      <workItem from="1654199226408" duration="3640000" />
+      <workItem from="1654243412556" duration="3980000" />
     </task>
     <task id="LOCAL-00001" summary="premier commit geraud">
       <created>1654157913767</created>
@@ -188,7 +191,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654190103161</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fin de l'implementation des déplacements">
+      <created>1654197172357</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1654197172357</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fin de l'implementation des déplacements">
+      <created>1654246790932</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1654246790932</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +243,8 @@
     <MESSAGE value="pb en récupérant le nombre de coup des joueurs mais ça va passer ^^" />
     <MESSAGE value="commit avec erreur" />
     <MESSAGE value="commit correction de l erreur" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit correction de l erreur" />
+    <MESSAGE value="fin de l'implementation des déplacements" />
+    <option name="LAST_COMMIT_MESSAGE" value="fin de l'implementation des déplacements" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/robotricochet$Main.ic" NAME="Main Coverage Results" MODIFIED="1654180138790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

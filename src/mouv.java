@@ -24,7 +24,8 @@ public class mouv {
     public static void choixdurobot() throws InterruptedException {
         boucle = true;
         couleurrobot = 0;
-        JFrame frame = new JFrame("frame");
+        int joueurencour = Game.joueur +1;
+        JFrame frame = new JFrame("joueur "+ joueurencour);
         frame.setLayout(new FlowLayout());
         JLabel label = new JLabel("Choisissez le robot que vous voulez bouger");
         //Ajouter l'étiquette au frame
@@ -77,7 +78,8 @@ public class mouv {
     public static void choixdirection() throws InterruptedException {
         boucle = true;
         direction = 0;
-        JFrame frame = new JFrame("frame");
+        int joueurencour = Game.joueur +1;
+        JFrame frame = new JFrame("joueur "+ joueurencour);
         frame.setLayout(new FlowLayout());
         JLabel label = new JLabel("Choisissez le robot que vous voulez bouger");
         //Ajouter l'étiquette au frame
@@ -149,7 +151,14 @@ public class mouv {
             case 1:
                 if(Game.y1!=0) {
                     if (!robot(Game.x1, Game.y1 - 1)) {
-                        int mur = (Game.murs[Game.x1][Game.y1]) % 2;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x1)==Game.murhori[i][1]){
+                                if((Game.y1)==Game.murhori[i][0]){
+                                mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.y1 -= 1;
                         } else {
@@ -163,12 +172,16 @@ public class mouv {
                 }
                 break;
             case 2:
-                System.out.println(Game.x1 + "  x1 et y1  " + Game.y1);
                 if(Game.y1!=15) {
                     if (!robot(Game.x1, Game.y1 + 1)) {
-                        mur = (Game.murs[Game.x1][Game.y1+1]) % 2;
-                        System.out.println("mur : "+ mur);
-                        System.out.println(Game.murs);
+                        int mur = 0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x1)==Game.murhori[i][1]){
+                                if((Game.y1+1)==Game.murhori[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.y1 += 1;
                         } else {
@@ -184,8 +197,14 @@ public class mouv {
             case 3:
                 if(Game.x1!=0) {
                     if (!robot(Game.x1-1, Game.y1)) {
-                        int mur1 = (Game.murs[Game.x1][Game.y1]) % 2;
-                        int mur = (Game.murs[Game.x1][Game.y1] - mur1)%10;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x1)==Game.murvert[i][1]){
+                                if((Game.y1)==Game.murvert[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.x1 -= 1;
                         } else {
@@ -201,8 +220,14 @@ public class mouv {
             case 4:
                 if(Game.x1!=15) {
                     if (!robot(Game.x1+1, Game.y1)) {
-                        int mur1 = (Game.murs[Game.x1+1][Game.y1]) % 2;
-                        int mur = (Game.murs[Game.x1+1][Game.y1] - mur1)%10;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x1+1)==Game.murvert[i][1]){
+                                if((Game.y1)==Game.murvert[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.x1 += 1;
                         } else {
@@ -220,45 +245,62 @@ public class mouv {
     public static void directionB(int direction){
         switch (direction){
         case 1:
-        if(Game.y2!=0) {
-            if (!robot(Game.x4, Game.y4- 1)) {
-                int mur = (Game.murs[Game.x4][Game.y4]) % 2;
-                if (mur == 0) {
-                    Game.y4-= 1;
-                } else {
+                if(Game.y2!=0) {
+                    if (!robot(Game.x2, Game.y2 - 1)) {
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x2)==Game.murhori[i][1]){
+                                if((Game.y2)==Game.murhori[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
+                        if (mur == 0) {
+                            Game.y2 -= 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else{
                     boucle = false;
                 }
-            } else {
-                boucle = false;
-            }
-        }else{
-            boucle = false;
-        }
-        break;
-        case 2:
-        System.out.println(Game.x2 + "  x2 et y2  " + Game.y2);
-        if(Game.y2!=15) {
-            if (!robot(Game.x2, Game.y2 + 1)) {
-                mur = (Game.murs[Game.x2][Game.y2+1]) % 2;
-                System.out.println("mur : "+ mur);
-                System.out.println(Game.murs);
-                if (mur == 0) {
-                    Game.y2 += 1;
-                } else {
+                break;
+            case 2:
+                if(Game.y2!=15) {
+                    if (!robot(Game.x2, Game.y2 + 1)) {
+                        int mur = 0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x2)==Game.murhori[i][1]){
+                                if((Game.y2+1)==Game.murhori[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
+                        if (mur == 0) {
+                            Game.y2 += 1;
+                        } else {
+                            boucle = false;
+                        }
+                    } else {
+                        boucle = false;
+                    }
+                }else{
                     boucle = false;
                 }
-            } else {
-                boucle = false;
-            }
-        }else{
-            boucle = false;
-        }
-        break;
+                break;
             case 3:
                 if(Game.x2!=0) {
                     if (!robot(Game.x2-1, Game.y2)) {
-                        int mur1 = (Game.murs[Game.x2][Game.y2]) % 2;
-                        int mur = (Game.murs[Game.x2][Game.y2] - mur1)%10;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x2)==Game.murvert[i][1]){
+                                if((Game.y2)==Game.murvert[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.x2 -= 1;
                         } else {
@@ -274,10 +316,16 @@ public class mouv {
             case 4:
                 if(Game.x2!=15) {
                     if (!robot(Game.x2+1, Game.y2)) {
-                        int mur1 = (Game.murs[Game.x2+1][Game.y2]) % 2;
-                        int mur = (Game.murs[Game.x2+1][Game.y2] - mur1)%10;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x2+1)==Game.murvert[i][1]){
+                                if((Game.y2)==Game.murvert[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
-                            Game.x1 += 1;
+                            Game.x2 += 1;
                         } else {
                             boucle = false;
                         }
@@ -288,15 +336,24 @@ public class mouv {
                     boucle = false;
                 }
                 break;
-    }}
+        }
+    }
+
     public static void directionJ(int direction){
         switch (direction){
             case 1:
                 if(Game.y3!=0) {
-                    if (!robot(Game.x4, Game.y4 - 1)) {
-                        int mur = (Game.murs[Game.x4][Game.y4]) % 2;
+                    if (!robot(Game.x3, Game.y3 - 1)) {
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x3)==Game.murhori[i][1]){
+                                if((Game.y3)==Game.murhori[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
-                            Game.y4 -= 1;
+                            Game.y3 -= 1;
                         } else {
                             boucle = false;
                         }
@@ -308,12 +365,16 @@ public class mouv {
                 }
                 break;
             case 2:
-                System.out.println(Game.x3 + "  x3 et y3  " + Game.y3);
                 if(Game.y3!=15) {
                     if (!robot(Game.x3, Game.y3 + 1)) {
-                        mur = (Game.murs[Game.x3][Game.y3+1]) % 2;
-                        System.out.println("mur : "+ mur);
-                        System.out.println(Game.murs);
+                        int mur = 0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x3)==Game.murhori[i][1]){
+                                if((Game.y3+1)==Game.murhori[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.y3 += 1;
                         } else {
@@ -329,8 +390,14 @@ public class mouv {
             case 3:
                 if(Game.x3!=0) {
                     if (!robot(Game.x3-1, Game.y3)) {
-                        int mur1 = (Game.murs[Game.x3][Game.y3]) % 2;
-                        int mur = (Game.murs[Game.x3][Game.y3] - mur1)%10;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x3)==Game.murvert[i][1]){
+                                if((Game.y3)==Game.murvert[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.x3 -= 1;
                         } else {
@@ -346,8 +413,14 @@ public class mouv {
             case 4:
                 if(Game.x3!=15) {
                     if (!robot(Game.x3+1, Game.y3)) {
-                        int mur1 = (Game.murs[Game.x3+1][Game.y3]) % 2;
-                        int mur = (Game.murs[Game.x3+1][Game.y3] - mur1)%10;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x3+1)==Game.murvert[i][1]){
+                                if((Game.y3)==Game.murvert[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.x3 += 1;
                         } else {
@@ -365,9 +438,16 @@ public class mouv {
     public static void directionV(int direction) {
         switch (direction) {
             case 1:
-                if (Game.y4 != 0) {
+                if(Game.y4!=0) {
                     if (!robot(Game.x4, Game.y4 - 1)) {
-                        int mur = (Game.murs[Game.x4][Game.y4]) % 2;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x4)==Game.murhori[i][1]){
+                                if((Game.y4)==Game.murhori[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.y4 -= 1;
                         } else {
@@ -376,17 +456,21 @@ public class mouv {
                     } else {
                         boucle = false;
                     }
-                } else {
+                }else{
                     boucle = false;
                 }
                 break;
             case 2:
-                System.out.println(Game.x4 + "  x4 et y4  " + Game.y4);
-                if (Game.y4 != 15) {
+                if(Game.y4!=15) {
                     if (!robot(Game.x4, Game.y4 + 1)) {
-                        mur = (Game.murs[Game.x4][Game.y4 + 1]) % 2;
-                        System.out.println("mur : " + mur);
-                        System.out.println(Game.murs);
+                        int mur = 0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x4)==Game.murhori[i][1]){
+                                if((Game.y4+1)==Game.murhori[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.y4 += 1;
                         } else {
@@ -395,15 +479,21 @@ public class mouv {
                     } else {
                         boucle = false;
                     }
-                } else {
+                }else{
                     boucle = false;
                 }
                 break;
             case 3:
                 if(Game.x4!=0) {
                     if (!robot(Game.x4-1, Game.y4)) {
-                        int mur1 = (Game.murs[Game.x4][Game.y4]) % 2;
-                        int mur = (Game.murs[Game.x4][Game.y4] - mur1)%10;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x4)==Game.murvert[i][1]){
+                                if((Game.y4)==Game.murvert[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.x4 -= 1;
                         } else {
@@ -419,8 +509,14 @@ public class mouv {
             case 4:
                 if(Game.x4!=15) {
                     if (!robot(Game.x4+1, Game.y4)) {
-                        int mur1 = (Game.murs[Game.x4+1][Game.y4]) % 2;
-                        int mur = (Game.murs[Game.x4+1][Game.y4] - mur1)%10;
+                        int mur =0;
+                        for(int i=0;i<23;i++){
+                            if((Game.x4+1)==Game.murvert[i][1]){
+                                if((Game.y4)==Game.murvert[i][0]){
+                                    mur =1;
+                                }
+                            }
+                        }
                         if (mur == 0) {
                             Game.x4 += 1;
                         } else {
